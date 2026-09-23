@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aura</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h1>AURA</h1>
+          <p>MINE · CONNECT · OWN</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="active" data-tab="dash">Dashboard</button>
+        <button data-tab="workers">Workers</button>
+        <button data-tab="stats">Stats</button>
+        <button data-tab="settings">Settings</button>
+      </nav>
+      <div class="side-foot">
+        <div class="wallet-card">
+          <div class="label">Wallet</div>
+          <div class="addr"><span id="walletShort">—</span><span>⧉</span></div>
+        </div>
+        <div class="premium"><span>Aura Premium</span><span class="badge">Lv. 3</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="top">
+        <div>
+          <h2 id="pageTitle">AURA</h2>
+          <div class="sub" id="pageSub">High-performance mining. Real ownership.</div>
+        </div>
+        <div class="connected"><span class="dot"></span><span id="connLabel">Connected</span></div>
+      </div>
+
+      <div class="panel active" id="panel-dash">
+                        <section class="stats">
+          <div class="card">
+            <div class="k">Hashrate</div>
+            <div class="v" id="hashrate">0 H/s</div>
+            <div class="delta" id="peak">Peak 0 H/s</div>
+          </div>
+          <div class="card">
+            <div class="k">Accepted shares</div>
+            <div class="v" id="shares">0</div>
+            <div class="delta" id="reject">Rejected 0 · 0%</div>
+          </div>
+          <div class="card">
+            <div class="k">Uptime</div>
+            <div class="v" id="uptime">00:00:00</div>
+            <div class="delta" id="statusLine">Ready</div>
+          </div>
+          <div class="card">
+            <div class="k">GPU temp / power</div>
+            <div class="v" id="gpuTemp">—</div>
+            <div class="delta" id="gpuPower">—</div>
+          </div>
+          <div class="card">
+            <div class="k">Pool latency</div>
+            <div class="v" id="poolLat">—</div>
+            <div class="delta" id="poolDiff">Diff —</div>
+          </div>
+          <div class="card">
+            <div class="k">AI hunter</div>
+            <div class="v" id="aiState">OFF</div>
+            <div class="delta" id="aiBoost">boost —</div>
+          </div>
+        </section>
+        <section class="engine">
+          <div class="engine-left">
+            <div class="rocket">🚀</div>
+            <div>
+              <h3 id="engineTitle">Ready to mine.</h3>
+              <p class="hint" id="liveLine" style="margin:4px 0 0">Live: —</p>
+              <p id="engineSub">GPU OpenCL · pool</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <select class="gpu-select" id="coinSelect"></select>
+            <div class="seg" id="dashModeSeg" style="display:flex;gap:6px"><button type="button" data-mode="pool" class="on">POOL</button><button type="button" data-mode="solo">SOLO</button></div><button class="btn-start" id="btnStart">START</button>
+            <button class="btn-povuci" id="btnPovuci" type="button">POVUCI</button>
+          </div>
+        </section>
+        <section class="market">
+          <div class="m-card"><div class="t">Explore mining</div><div class="s">Shareovi na pool · AI ne laže blokove</div></div>
+          <div class="m-card"><div class="t">Featured pool</div><div class="s" id="poolLine">—</div></div>
+          <div class="m-card"><div class="t">Session</div><div class="s" id="sessionLine">—</div></div>
+        </section>
+        <pre class="log" id="log"></pre>
+      </div>
+
+      <div class="panel" id="panel-workers">
+        <div class="card">
+          <div class="k">Workers · NiceHash / Hive style</div>
+          <p class="hint" style="margin:8px 0 12px">GPU (nvidia-smi) · ASIC LAN · NerdMiner USB — status, hashrate, temp, util.</p>
+          <table class="table" id="workersTable">
+            <thead>
+              <tr>
+                <th>Worker</th>
+                <th>Type</th>
+                <th>Algo</th>
+                <th>Hashrate</th>
+                <th>Temp</th>
+                <th>Util</th>
+                <th>Power</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="k">Connection</div>
+          <div class="delta" id="workerConn" style="margin-top:10px;font-size:13px;color:var(--text)">—</div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-stats">
+        <section class="stats">
+          <div class="card"><div class="k">Hashrate</div><div class="v" id="sHash">0</div><div class="delta" id="sPeak">Peak</div></div>
+          <div class="card"><div class="k">Accepted</div><div class="v" id="sAcc">0</div><div class="delta" id="sRej">Rejected 0</div></div>
+          <div class="card"><div class="k">Reject rate</div><div class="v" id="sRejPct">0%</div><div class="delta" id="sTotal">Total shares 0</div></div>
+        </section>
+        <section class="stats">
+          <div class="card"><div class="k">Uptime</div><div class="v" id="sUp" style="font-size:22px">00:00:00</div><div class="delta" id="sMode">mode</div></div>
+          <div class="card"><div class="k">Algorithm</div><div class="v" id="sAlgo" style="font-size:18px">—</div><div class="delta" id="sEng">engine</div></div>
+          <div class="card"><div class="k">GPU</div><div class="v" id="sGpu" style="font-size:16px">—</div><div class="delta" id="sGpuDet">temp · util</div></div>
+        </section>
+        <div class="card">
+          <div class="k">Session pile (earnings)</div>
+          <div class="v" id="sSession" style="font-size:18px;margin-top:10px">—</div>
+          <div class="delta" id="sHashes">hashes</div>
+          <div id="sByCoin" class="hint" style="margin-top:10px"></div>
+        </div>
+        <pre class="log tall" id="sLog"></pre>
+      </div>
+
+      <div class="panel" id="panel-settings">
+        <div class="card">
+          <div class="k">Mining · Pool / Solo</div>
+          <p class="hint" style="margin:8px 0 12px">Kao stari HashStart: coin, pool/solo, host, port, jedan wallet za aktivni coin.</p>
+          <div class="settings-grid">
+            <div class="field">
+              <label>Coin</label>
+              <select id="setCoin"></select>
+            </div>
+            <div class="field">
+              <label>Mode</label>
+              <div class="seg" id="modeSeg">
+                <button type="button" data-mode="pool" class="on">Pool</button>
+                <button type="button" data-mode="solo">Solo</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Pool / Solo host</label>
+              <input id="setHost" spellcheck="false" />
+            </div>
+            <div class="field">
+              <label>Port</label>
+              <input id="setPort" spellcheck="false" />
+            </div>
+            <div class="field full">
+              <label>Wallet adresa (aktivni coin)</label>
+              <input id="setWallet" spellcheck="false" />
+            </div>
+            <div class="field">
+              <label>Worker name (override)</label>
+              <input id="setWorker" spellcheck="false" placeholder="prazno = auto iz coins.py" />
+            </div>
+            <div class="field">
+              <label>Pool password</label>
+              <input id="setPass" spellcheck="false" placeholder="obično x" />
+            </div>
+            <div class="field full">
+              <label>Login preview (šta ide na pool)</label>
+              <input id="setLoginPreview" readonly />
+            </div>
+            <div class="field">
+              <label>Algorithm</label>
+              <input id="setAlgo" readonly />
+            </div>
+            <div class="field">
+              <label>Pool miner</label>
+              <input id="setPoolMiner" readonly />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="k">Payout · Unmineable / convert</div>
+          <div class="settings-grid">
+            <div class="field">
+              <label>Payout coin</label>
+              <input id="setPayout" spellcheck="false" placeholder="NATIVE / BCH / BTC…" />
+            </div>
+            <div class="field">
+              <label>Payout tag / memo</label>
+              <input id="setPayoutTag" spellcheck="false" />
+            </div>
+            <div class="field full">
+              <label>Payout target (opcionalno)</label>
+              <input id="setPayoutTarget" spellcheck="false" />
+            </div>
+          </div>
+        </div>
+<div class="card">
+          <div class="k">Devices · ASIC / LAN / subnet</div>
+          <div class="settings-grid">
+            <div class="field full">
+              <label>ASIC / LAN IPs (zarezima)</label>
+              <input id="setAsic" spellcheck="false" placeholder="192.168.1.50, 192.168.1.51" />
+            </div>
+            <div class="field full">
+              <label>Extra subnet</label>
+              <input id="setSubnet" spellcheck="false" placeholder="192.168.2.0/24" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="k">NerdMiner USB</div>
+          <div class="settings-grid">
+            <div class="field">
+              <label>Port / COM</label>
+              <input id="setNmHost" spellcheck="false" placeholder="COM3" />
+            </div>
+            <div class="field">
+              <label>Hashrate label</label>
+              <input id="setNmHs" spellcheck="false" placeholder="80 H/s" />
+            </div>
+            <div class="field">
+              <label>WiFi SSID</label>
+              <input id="setNmWifi" spellcheck="false" />
+            </div>
+            <div class="field">
+              <label>Active</label>
+              <div class="seg" id="nmActiveSeg">
+                <button type="button" data-nm="0" class="on">Off</button>
+                <button type="button" data-nm="1">On</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button class="btn-save" id="btnSave">Save settings</button>
+          <button class="btn-save btn-ghost" id="btnFillEndpoint">Fill host from coin</button>
+          <span class="hint" id="saveMsg"></span>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="povuciModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <div class="k">POVUCI</div>
+          <div class="hint" style="margin-top:4px">Jedan prozor — zalijepi wallet i povuci na njega (kao stari HashStart).</div>
+        </div>
+        <button type="button" class="modal-x" id="povuciClose" aria-label="Close">X</button>
+      </div>
+      <div class="settings-grid" style="margin-top:12px">
+        <div class="field">
+          <label>Payout coin</label>
+          <select id="povuciCoin">
+            <option value="BTC">BTC</option>
+            <option value="BCH">BCH</option>
+            <option value="XMR">XMR</option>
+            <option value="XRP">XRP</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Spremno / saldo</label>
+          <div id="povuciBalBig" style="font-size:1.35rem;font-weight:700;color:#c4b5fd;margin:4px 0 8px">—</div>
+          <input id="povuciBal" readonly value="—" />
+          <div class="hint" id="povuciHint" style="margin-top:6px"></div>
+        </div>
+        <div class="field full">
+          <label>Wallet (odrediste)</label>
+          <div style="display:flex;gap:8px">
+            <input id="povuciAddr" spellcheck="false" style="flex:1" placeholder="Zalijepi adresu novcanika" />
+            <button type="button" class="btn-save btn-ghost" id="povuciPaste">Zalijepi</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Iznos (opcionalno)</label>
+          <input id="povuciAmount" spellcheck="false" placeholder="prazno = max / auto" />
+        </div>
+        <div class="field">
+          <label>Tag / memo (XRP)</label>
+          <input id="povuciTag" spellcheck="false" />
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap">
+        <button type="button" class="btn-povuci" id="povuciGo">POVUCI</button>
+        <button type="button" class="btn-save btn-ghost" id="povuciOpenWeb">Otvori unMineable</button>
+        <span class="hint" id="povuciMsg"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+
+# Logs / local runtime noise
+*.log
+mining_log.json
+_ui_*.txt
+*_launch_*.txt
+
+# Local overrides / secrets
+config.local.json
+.env
+.env.*
+*.pem
+*.key
+
+# Backups / temp
+_bak_*/
+*.bak
+*.tmp
+~$*
+Thumbs.db
+Desktop.ini
+
+# PyInstaller build intermediates (dist/ is published intentionally)
+build/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store

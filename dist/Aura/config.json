@@ -1,0 +1,23 @@
+﻿{
+  "hs_peak": 0,
+  "wallets": {
+    "BTC": "YOUR_BTC_WALLET",
+    "BCH": "YOUR_BCH_WALLET",
+    "PRL": "YOUR_PRL_WALLET"
+  },
+  "address": "YOUR_PRL_WALLET",
+  "payout": "BTC",
+  "worker_name": "Aura",
+  "pearl_ai": true,
+  "auto_ai": true,
+  "pearl_ai_boost": 8,
+  "ai_intensity": 8,
+  "coin": "PRL",
+  "mode": "pool",
+  "host": "pearlpow.unmineable.com",
+  "port": "4444",
+  "pool_password": "x",
+  "hs_boost": 8,
+  "pearl_ai_best_rate": 0,
+  "pearl_ai_best_boost": 8
+}

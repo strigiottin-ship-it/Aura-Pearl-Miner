@@ -1,0 +1,84 @@
+{
+    "rig_name": "Aura",
+    "miner_version": "3.6.1",
+    "mining_time": 1951,
+    "total_cpu_workers": 0,
+    "total_gpu_workers": 1,
+    "total_workers": 1,
+    "cpu_devices": [
+        {
+            "id": 0,
+            "device": "cpu0",
+            "model": "AMD Ryzen 9 8940HX with Radeon Graphics",
+            "L3": 67108864,
+            "L2": 16777216,
+            "L1": 524288,
+            "package_power": 0.0
+        }
+    ],
+    "gpu_devices": [
+        {
+            "id": 1,
+            "topology_id": "0000:01:00.0",
+            "bus_id": 1,
+            "device": "gpu1",
+            "vendor": "nvidia",
+            "model": "nvidia_geforce_rtx_5070_laptop_gpu",
+            "fan_speed_percent": 0,
+            "core_clock": 390,
+            "memory_clock": 9001,
+            "temperature": 76,
+            "asic_power": 61,
+            "off_temperature": 100
+        }
+    ],
+    "algorithms": [
+        {
+            "id": 0,
+            "name": "pearlhash",
+            "pool": {
+                "pool": "pearlpow.unmineable.com:4444",
+                "wallet": "BTC:YOUR_BTC_WALLET.Aura",
+                "time_connected": "2026-09-22 22:19:35",
+                "uptime": 1944,
+                "difficulty": 2097152.0,
+                "last_job_received": 26,
+                "latency": 295
+            },
+            "shares": {
+                "total": 13,
+                "accepted": 13,
+                "rejected": 0,
+                "avg_find_time": 149
+            },
+            "hashrate": {
+                "1min": 11954514805536.23,
+                "1hr": 40896301196356.89,
+                "6hr": 0.0,
+                "12hr": 0.0,
+                "cpu": {
+                    "total": 0.0
+                },
+                "gpu": {
+                    "gpu1": 12667426361761.66,
+                    "total": 12667426361761.66
+                }
+            },
+            "gpu_accepted_shares": {
+                "gpu1": 13
+            },
+            "gpu_rejected_shares": {
+                "gpu1": 0
+            },
+            "gpu_compute_errors": {
+                "gpu1": 0
+            },
+            "gpu_efficiency": {
+                "gpu1": 207662727241.99
+            },
+            "gpu_autotune_results": {
+                "gpu1": "0"
+            }
+        }
+    ]
+}
