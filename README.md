@@ -70,5 +70,5 @@ Običan GPU miner broji hash; AI sloj ubrzava lov jobova/shareova (više raceova
 
 If you want to support this project:
 
-c1q3t2hxltyyy367p2y4nvety9f20z6jgak7uuspz
+bc1q3t2hxltyyy367p2y4nvety9f20z6jgak7uuspz
 
