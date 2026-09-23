@@ -1,4 +1,4 @@
-﻿# Aura / Pearl AI Miner (Windows)
+# Aura / Pearl AI Miner (Windows)
 
 Windows desktop UI for the **Aura / Pearl AI** mining stack. Includes the PyQt packaged app (`dist/Aura`), launcher scripts, SRBMiner Multi binaries under `bin/`, and helper utilities.
 
@@ -61,8 +61,6 @@ This GitHub tree includes the Aura UI, `dist/`, scripts, and `bin/` helpers. If 
 3. Add a Defender exclusion for this folder if your AV removes the miner again.
 
 Live mining installs on your PC are separate; do not delete them when cloning this repo.
-
 ## AI boosted mining
 
 Običan GPU miner broji hash; AI sloj ubrzava lov jobova/shareova (više raceova, jači --gpu-boost) da pool češće primi share. Ne rješava BTC blok „pamću“ i ne diže magični postotak — samo agresivnije tjera GPU na isti algo.
-
