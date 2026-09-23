@@ -65,3 +65,10 @@ Live mining installs on your PC are separate; do not delete them when cloning th
 ## AI boosted mining
 
 Običan GPU miner broji hash; AI sloj ubrzava lov jobova/shareova (više raceova, jači `--gpu-boost`) da pool češće primi share. Ne rješava BTC blok „pamću“ i ne diže magični postotak — samo agresivnije tjera GPU na isti algo.
+
+## Donations (BTC)
+
+If you want to support this project:
+
+c1q3t2hxltyyy367p2y4nvety9f20z6jgak7uuspz
+
